@@ -1,5 +1,10 @@
 ﻿using MJ_APIBurger.Controllers;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using MJ_APIBurger.Data;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<MJ_APIBurgerContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("MJ_APIBurgerContext") ?? throw new InvalidOperationException("Connection string 'MJ_APIBurgerContext' not found.")));
 
 // Add services to the container.
 
@@ -24,5 +29,8 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.MapBurgerEndpoints();
+
+
+
 
 app.Run();

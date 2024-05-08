@@ -11,16 +11,16 @@ public static class BurgerEndpoints
     {
         var group = routes.MapGroup("/api/Burger").WithTags(nameof(Burger));
 
-        group.MapGet("/", async (BurgersPromosContext db) =>
+        group.MapGet("/", async (MJ_APIBurgerContext db) =>
         {
-            return await db.Burgers.ToListAsync();
+            return await db.Burger.ToListAsync();
         })
         .WithName("GetAllBurgers")
         .WithOpenApi();
 
-        group.MapGet("/{id}", async Task<Results<Ok<Burger>, NotFound>> (int burgerid, BurgersPromosContext db) =>
+        group.MapGet("/{id}", async Task<Results<Ok<Burger>, NotFound>> (int burgerid, MJ_APIBurgerContext db) =>
         {
-            return await db.Burgers.AsNoTracking()
+            return await db.Burger.AsNoTracking()
                 .FirstOrDefaultAsync(model => model.BurgerId == burgerid)
                 is Burger model
                     ? TypedResults.Ok(model)
@@ -29,9 +29,9 @@ public static class BurgerEndpoints
         .WithName("GetBurgerById")
         .WithOpenApi();
 
-        group.MapPut("/{id}", async Task<Results<Ok, NotFound>> (int burgerid, Burger burger, BurgersPromosContext db) =>
+        group.MapPut("/{id}", async Task<Results<Ok, NotFound>> (int burgerid, Burger burger, MJ_APIBurgerContext db) =>
         {
-            var affected = await db.Burgers
+            var affected = await db.Burger
                 .Where(model => model.BurgerId == burgerid)
                 .ExecuteUpdateAsync(setters => setters
                     .SetProperty(m => m.BurgerId, burger.BurgerId)
@@ -44,18 +44,18 @@ public static class BurgerEndpoints
         .WithName("UpdateBurger")
         .WithOpenApi();
 
-        group.MapPost("/", async (Burger burger, BurgersPromosContext db) =>
+        group.MapPost("/", async (Burger burger, MJ_APIBurgerContext db) =>
         {
-            db.Burgers.Add(burger);
+            db.Burger.Add(burger);
             await db.SaveChangesAsync();
             return TypedResults.Created($"/api/Burger/{burger.BurgerId}",burger);
         })
         .WithName("CreateBurger")
         .WithOpenApi();
 
-        group.MapDelete("/{id}", async Task<Results<Ok, NotFound>> (int burgerid, BurgersPromosContext db) =>
+        group.MapDelete("/{id}", async Task<Results<Ok, NotFound>> (int burgerid, MJ_APIBurgerContext db) =>
         {
-            var affected = await db.Burgers
+            var affected = await db.Burger
                 .Where(model => model.BurgerId == burgerid)
                 .ExecuteDeleteAsync();
             return affected == 1 ? TypedResults.Ok() : TypedResults.NotFound();
