@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MJ_APIBurger", "MJ_APIBurger.csproj", "{CB209567-9480-4684-ADDF-53066F1A6C19}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CB209567-9480-4684-ADDF-53066F1A6C19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB209567-9480-4684-ADDF-53066F1A6C19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB209567-9480-4684-ADDF-53066F1A6C19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB209567-9480-4684-ADDF-53066F1A6C19}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {755BA9A2-47F0-4E4D-90E1-1415B6DC9539}
+	EndGlobalSection
+EndGlobal
