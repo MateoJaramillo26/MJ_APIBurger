@@ -14,6 +14,7 @@ namespace MJ_APIBurger.Data
         {
         }
 
-        public DbSet<MJ_APIBurger.Data.Models.Burger> Burger { get; set; } = default!;
+        public DbSet<MJ_APIBurger.Data.Models.MJBurger> Burger { get; set; } = default!;
+        public DbSet<MJPromo> Promos { get; set; }
     }
 }

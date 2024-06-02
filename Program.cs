@@ -2,12 +2,12 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using MJ_APIBurger.Data;
+
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<MJ_APIBurgerContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("MJ_APIBurgerContext") ?? throw new InvalidOperationException("Connection string 'MJ_APIBurgerContext' not found.")));
+builder.Services.AddDbContext<BurgersPromosContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("MJ_APIBurgerContext") ?? throw new InvalidOperationException("Connection string 'BurgersPromosContext' not found.")));
 
 // Add services to the container.
-
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -23,14 +23,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
-
-app.MapBurgerEndpoints();
-
-
-
-
+app.MapMJBurgerEndpoints();
 app.Run();
